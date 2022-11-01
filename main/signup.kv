@@ -1,0 +1,177 @@
+MDScreen:
+    name: "signup"
+    MDFloatLayout:
+        md_bg_color: 0, 0, 0, 1
+
+        Image:
+			source: "logo.png"
+			size_hint: .35, .35
+			pos_hint: {"center_x": .18, "center_y": .9}
+
+	    MDTextField:
+		    id: signup_email
+			font_name: "Poppins-Regular.ttf"
+			size_hint_x: .80
+			pos_hint: {"center_x": .50, "center_y": .75}
+			hint_text: 'Email Address'
+			hint_text_color_normal: "white"
+			validator: 'email'
+            text_color_normal: "white"
+			background_color: 0, 0, 0, 0
+			cursor_color: 1, 1, 1, 1
+			cursor_width: "2sp"
+			foreground_color: 1, 1, 1, 1
+			required: True
+			font_size: "14sp"
+			multiline: False
+
+	    MDTextField:
+		    id: signup_fullname
+			font_name: "Poppins-Regular.ttf"
+			size_hint_x: .80
+			pos_hint: {"center_x": .50, "center_y": .67}
+			hint_text: 'Full Name'
+			hint_text_color_normal: "white"
+            text_color_normal: "white"
+			background_color: 0, 0, 0, 0
+			cursor_color: 1, 1, 1, 1
+			cursor_width: "2sp"
+			foreground_color: 1, 1, 1, 1
+			required: True
+			font_size: "14sp"
+			multiline: False
+
+	    MDTextField:
+		    id: signup_mobile
+			font_name: "Poppins-Regular.ttf"
+			size_hint_x: .80
+			pos_hint: {"center_x": .50, "center_y": .59}
+			hint_text: 'Mobile number'
+            hint_text_color_normal: "white"
+            text_color_normal: "white"
+			background_color: 0, 0, 0, 0
+			cursor_color: 1, 1, 1, 1
+			cursor_width: "2sp"
+			foreground_color: 1, 1, 1, 1
+			required: True
+			font_size: "14sp"
+			multiline: False
+
+	    MDTextField:
+		    id: signup_birthday
+			font_name: "Poppins-Regular.ttf"
+            size_hint_x: .80
+			pos_hint: {"center_x": .50, "center_y": .51}
+			hint_text: 'Birthday'
+			validator: 'date'
+			date_format: "dd/mm/yyyy"
+            hint_text_color_normal: "white"
+            text_color_normal: "white"
+			background_color: 0, 0, 0, 0
+			cursor_color: 1, 1, 1, 1
+			cursor_width: "2sp"
+			foreground_color: 1, 1, 1, 1
+			required: True
+			font_size: "14sp"
+			multiline: False
+
+		MDTextField:
+		    id: signup_password
+			font_name: "Poppins-Regular.ttf"
+            size_hint_x: .80
+			pos_hint: {"center_x": .50, "center_y": .43}
+			hint_text: 'Password'
+            hint_text_color_normal: "white"
+            text_color_normal: "white"
+			background_color: 0, 0, 0, 0
+			cursor_color: 1, 1, 1, 1
+			cursor_width: "2sp"
+			font_size: "14sp"
+			foreground_color: 1, 1, 1, 1
+			required: True
+			multiline: False
+			password: True
+
+		MDIconButton:
+            icon: "eye-off"
+            pos_hint: {"center_x": .88, "center_y": .43}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+			on_release:
+                self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                signup_password.password = False if signup_password.password is True else True
+
+
+		MDTextButton:
+			text: "SIGNUP"
+			background_color: 0, 0, 0, 0
+			font_name: "Poppins-Medium.ttf"
+			size_hint: .79, .08
+			pos_hint: {"center_x": .5, "center_y": .33}
+			halign: "center"
+			on_release: app.signup()
+
+			canvas.before:
+				Color:
+					rgb: 24/255, 119/225, 242/255, 1
+				RoundedRectangle:
+					size: self.size
+					pos: self.pos
+					radius: [10]
+
+		MDLabel:
+		    text: "Have an existing account?"
+		    color: 1, 1, 1, 1
+            pos_hint: {"center_y": .27}
+            font_size: "13sp"
+            font_name: "Poppins-Regular.ttf"
+            halign: "center"
+
+        MDTextButton:
+		    text: "Login"
+		    color: "blue"
+            pos_hint: {"center_y": .24, "center_x": .50}
+            font_size: "13sp"
+            font_name: "Poppins-Regular.ttf"
+            halign: "center"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "login"
+
+		MDLabel:
+		    text: "or"
+		    color: 1, 1, 1, 1
+            pos_hint: {"center_y": .20}
+            font_size: "13sp"
+            font_name: "Poppins-Regular.ttf"
+            halign: "center"
+
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178, 178, 255)
+            size_hint: .3, .002
+            pos_hint: {"center_x": .7, "center_y": .200}
+        MDFloatLayout:
+            md_bg_color: rgba(178, 178, 178, 255)
+            size_hint: .3, .002
+            pos_hint: {"center_x": .3, "center_y": .200}
+
+        MDLabel:
+		    text: "Connect with"
+		    color: 1, 1, 1, 1
+            pos_hint: {"center_y": .17}
+            font_size: "13sp"
+            font_name: "Poppins-Regular.ttf"
+            halign: "center"
+
+        MDGridLayout:
+            cols: 3
+            size_hint: .48, .07
+            pos_hint:{"center_x": .5, "center_y": .1}
+
+            Image:
+                source: "google.png"
+            Image:
+                source: "facebook.png"
+            Image:
+                source: "applewhite.png"
+

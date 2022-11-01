@@ -1,0 +1,39 @@
+MDScreen:
+    name: "terms"
+    MDFloatLayout:
+        md_bg_color: 0, 0, 0, 1
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_y": .95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(265, 234, 58, 255)
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "login"
+
+        MDLabel:
+			text: "Terms of Use"
+			font_size: "14sp"
+			font_name: "Poppins-SemiBold.ttf"
+			pos_hint: {"center_x": .61, "center_y": .90}
+            color: 1, 1, 1, 1
+
+        MDLabel:
+			text: "Our Services"
+			font_size: "14sp"
+			font_name: "Poppins-SemiBold.ttf"
+			pos_hint: {"center_x": .61, "center_y": .85}
+            color: 1, 1, 1, 1
+
+        MDLabel:
+			text: "Your Account"
+			font_size: "14sp"
+			font_name: "Poppins-SemiBold.ttf"
+			pos_hint: {"center_x": .61, "center_y": .80}
+            color: 1, 1, 1, 1
+
+        MDLabel:
+            size_hint_y: None
+            text_size: self.width, None
+            height: self.texture_size[1]

@@ -1,0 +1,134 @@
+MDScreen:
+	name: "login"
+	MDFloatLayout:
+		md_bg_color: 0, 0, 0, 1
+		Image:
+			source: "logo.png"
+			size_hint: .35, .35
+			pos_hint: {"center_x": .18, "center_y": .9}
+		MDLabel:
+			text: "Proceed with your"
+			font_size: "15sp"
+			font_name: "Poppins-Medium.ttf"
+			color: 1, 1, 1, 1
+			pos_hint: {"center_x": .6, "center_y": .82}
+		MDLabel:
+			text: "Login"
+			font_size: "28sp"
+			font_name: "Poppins-SemiBold.ttf"
+			color: 1, 1, 1, 1
+			pos_hint: {"center_x": .6, "center_y": .78}
+
+		MDFloatLayout:
+			size_hint: .79, .08
+			pos_hint: {"center_x": .5, "center_y": .42}
+
+		MDLabel:
+			text: "Don't have an account?"
+			font_size: "13sp"
+			font_name: "Poppins-Medium.ttf"
+			color: 1, 1, 1, 1
+			pos_hint: {"center_x": .6, "center_y": .68}
+
+		MDTextButton:
+			text: "SignUp"
+			font_size: "13sp"
+			pos_hint: {"center_x": .68, "center_y": .68}
+            color: "blue"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "signup"
+
+		MDTextField:
+		    id:login_username
+			font_name: "Poppins-Regular.ttf"
+			size_hint_x: .8
+			pos_hint: {"center_x": .5, "center_y": .5}
+			hint_text: 'Email Address'
+			validator: "email"
+			hint_text_color_normal: "white"
+            helper_text:'Required'
+            color: "white"
+            helper_text_mode:  'on_error'
+            text_color_normal: "white"
+			background_color: 1, 1, 1, 1
+			cursor_color: 1, 1, 1, 1
+			cursor_width: "2sp"
+			foreground_color: 1, 1, 1, 1
+			required: True
+			font_size: "14sp"
+			multiline: False
+
+        MDIconButton:
+            icon: "account"
+            pos_hint: {"center_x": .88, "center_y": .50}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+
+		MDTextField:
+		    id:login_password
+		    size_hint_x: .8
+			font_name: "Poppins-Regular.ttf"
+			pos_hint: {"center_x": .50, "center_y": .38}
+			hint_text: 'Password'
+			hint_text_color_normal: "white"
+            helper_text:'Required'
+            helper_text_mode:  'on_error'
+            text_color_normal: 'white'
+            color: "white"
+			background_color: 1, 1, 1, 1
+			cursor_color: 1, 1, 1, 1
+			cursor_width: "2sp"
+			font_size: "14sp"
+			foreground_color: 1, 1, 1, 1
+			required: True
+			multiline: False
+			password: True
+
+		MDIconButton:
+            icon: "eye-off"
+            pos_hint: {"center_x": .88, "center_y": .38}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+			on_release:
+                self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                login_password.password = False if login_password.password is True else True
+
+
+		MDTextButton:
+			text: "Login"
+			background_color: 0, 0, 0, 0
+			font_name: "Poppins-Medium.ttf"
+			size_hint: .79, .08
+			pos_hint: {"center_x": .5, "center_y": .21}
+			halign: "center"
+			on_press:
+                app.login()
+                # app.username_changer()
+			canvas.before:
+				Color:
+					rgb: 24/255, 119/225, 242/255, 1
+				RoundedRectangle:
+					size: self.size
+					pos: self.pos
+					radius: [10]
+
+		MDTextButton:
+			text: "Forgot Password?"
+			font_size: "13sp"
+			pos_hint: {"center_x": .5, "center_y": .13}
+			halign: "center"
+			color: 1, 1, 1, 1
+			on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "forgot"
+
+        MDTextButton:
+			text: "Terms & Services"
+			font_size: "13sp"
+			pos_hint: {"center_x": .5, "center_y": .05}
+			halign: "center"
+			color: "blue"
+			on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "terms"
