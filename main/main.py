@@ -5,6 +5,7 @@ from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
+from db_config import signup_account, login_account
 
 
 class SentiSnap(MDApp):
@@ -23,30 +24,29 @@ class SentiSnap(MDApp):
 
     def signup(self):
         signup = self.root.get_screen('signup')
-
         signupEmail = signup.ids.signup_email.text
         signupFullname = signup.ids.signup_fullname.text
         signupMobile = signup.ids.signup_mobile.text
         signupBirthday = signup.ids.signup_birthday.text
         signupPassword = signup.ids.signup_password.text
 
-        # if signupEmail.split() == [] or signupUsername.split() == [] or signupPassword.split() == []:
-        #     cancel_btn_username_dialogue = MDFlatButton(text='Retry', on_release=self.close_username_dialog)
-        #     self.dialog = MDDialog(title='Invalid Input', text='Please Enter a valid Input', size_hint=(0.7, 0.2),
-        #                            buttons=[cancel_btn_username_dialogue])
-        #     self.dialog.open()
-        # if len(signupUsername.split()) > 1:
-        #     cancel_btn_username_dialogue = MDFlatButton(text='Retry', on_release=self.close_username_dialog)
-        #     self.dialog = MDDialog(title='Invalid Username', text='Please enter username without space',
-        #                            size_hint=(0.7, 0.2), buttons=[cancel_btn_username_dialogue])
-        #     self.dialog.open()
-        # else:
-        print(signupEmail, signupFullname, signupMobile, signupBirthday, signupPassword)
+
+        if signupEmail != "" and signupPassword != "":
+            signup_account(signupEmail, signupPassword)
+        else:
+            print(signupEmail, signupFullname, signupMobile, signupBirthday, signupPassword)
 
     def login(self):
         login = self.root.get_screen('login')
-        print(login.ids.login_username.text)
-        print(login.ids.login_password.text)
+        username = login.ids.login_username.text
+        password = login.ids.login_password.text
+
+        if username != "" and password != "":
+            login = login_account(username, password)
+            if login:
+                self.root.switch_to(self.root.get_screen('signup'))
+        else:
+            print(username, password)
 
     def close_username_dialog(self, obj):
         self.dialog.dismiss()

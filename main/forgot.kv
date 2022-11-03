@@ -14,6 +14,7 @@ MDScreen:
 			font_name: "Poppins-Medium.ttf"
 			color: 1, 1, 1, 1
 			pos_hint: {"center_x": .6, "center_y": .82}
+
 		MDLabel:
 			text: "Account"
 			font_size: "28sp"
@@ -21,20 +22,15 @@ MDScreen:
 			color: 1, 1, 1, 1
 			pos_hint: {"center_x": .6, "center_y": .78}
 
-		MDLabel:
-			text: "Username"
-			font_size: "14sp"
-			font_name: "Poppins-SemiBold.ttf"
-			pos_hint: {"center_x": .61, "center_y": .67}
-            color: 1, 1, 1, 1
-
-		TextInput:
-			size_hint_y: .75
+		MDTextField:
 			font_name: "Poppins-Regular.ttf"
-			pos_hint: {"center_x": .60, "center_y": .29}
-			hint_text: 'Username'
+			size_hint_x: .80
+			pos_hint: {"center_x": .50, "center_y": .69}
+			hint_text: 'Email Address'
             helper_text:'Required'
             helper_text_mode:  'on_error'
+            hint_text_color_normal: "white"
+            text_color_normal: "white"
 			background_color: 0, 0, 0, 0
 			cursor_color: 1, 1, 1, 1
 			cursor_width: "2sp"
@@ -43,25 +39,15 @@ MDScreen:
 			font_size: "17sp"
 			multiline: False
 
-        MDFloatLayout:
-			size_hint: .8, .002
-			pos_hint: {"center_x": .5, "center_y": .6}
-            md_bg_color: 120/255, 120/255, 120/255, 1
-
-        MDLabel:
-			text: "New Password"
-			font_size: "14sp"
-			font_name: "Poppins-SemiBold.ttf"
-			pos_hint: {"center_x": .61, "center_y": .57}
-            color: 1, 1, 1, 1
-
-		TextInput:
-			size_hint_y: .75
+		MDTextField:
 			font_name: "Poppins-Regular.ttf"
-			pos_hint: {"center_x": .60, "center_y": .19}
+			size_hint_x: .80
+			pos_hint: {"center_x": .50, "center_y": .57}
 			hint_text: 'New Password'
             helper_text:'Required'
             helper_text_mode:  'on_error'
+            hint_text_color_normal: "white"
+            text_color_normal: "white"
 			background_color: 0, 0, 0, 0
 			cursor_color: 1, 1, 1, 1
 			cursor_width: "2sp"
@@ -70,25 +56,16 @@ MDScreen:
 			required: True
 			multiline: False
             password: True
-        MDFloatLayout:
-			size_hint: .8, .002
-			pos_hint: {"center_x": .5, "center_y": .5}
-            md_bg_color: 120/255, 120/255, 120/255, 1
 
-		MDLabel:
-			text: "Confirm New Password"
-			font_size: "14sp"
-			font_name: "Poppins-SemiBold.ttf"
-			pos_hint: {"center_x": .61, "center_y": .48}
-            color: 1, 1, 1, 1
-
-		TextInput:
-			size_hint_y: .75
+		MDTextField:
 			font_name: "Poppins-Regular.ttf"
-			pos_hint: {"center_x": .60, "center_y": .10}
+			size_hint_x: .80
+			pos_hint: {"center_x": .50, "center_y": .45}
 			hint_text: 'Confirm New Password'
             helper_text:'Required'
             helper_text_mode:  'on_error'
+            hint_text_color_normal: "white"
+            text_color_normal: "white"
 			background_color: 0, 0, 0, 0
 			cursor_color: 1, 1, 1, 1
 			cursor_width: "2sp"
@@ -97,11 +74,6 @@ MDScreen:
 			required: True
 			multiline: False
 			password: True
-
-		MDFloatLayout:
-			size_hint: .8, .002
-			pos_hint: {"center_x": .5, "center_y": .4}
-            md_bg_color: 120/255, 120/255, 120/255, 1
 
 		MDTextButton:
 			text: "UPDATE"
