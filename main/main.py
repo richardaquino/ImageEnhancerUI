@@ -43,8 +43,7 @@ class SentiSnap(MDApp):
 
         if username != "" and password != "":
             login = login_account(username, password)
-            if login:
-                self.root.switch_to(self.root.get_screen('signup'))
+
         else:
             print(username, password)
 
